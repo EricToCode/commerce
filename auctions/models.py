@@ -5,8 +5,12 @@ from django.db import models
 class User(AbstractUser):
     pass
 
-class Auction(models.Model):
-    pass
+class Listing(models.Model):
+    title = models.CharField(max_length=80)
+    description = models.CharField(max_length=2000)
+    startingbid = models.IntegerField()
+    image = models.CharField(max_length=64)
+    category = models.CharField(max_length=64)
 
 class Bid(models.Model):
     pass

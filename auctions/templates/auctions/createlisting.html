@@ -1,0 +1,32 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+
+    <h2>Create a new listing</h2>
+    <br>
+    <form action="{% url 'savelisting' %}" method="post">
+        {% csrf_token %}
+        <div>
+            <p>Title of Listing</p>
+            <input autofocus type="text" name="title" placeholder="Enter title here">
+        </div>
+        <br>
+        <div>
+            <p>Description of Listing</p>
+            <textarea name="description" rows="4" cols="50"></textarea>
+        </div>
+        <br>
+        <div>
+            <p>Starting Bid</p>
+            <input type="number" name="starting bid" value="1">
+        </div>
+        <br>
+        <div>
+            <p>(Optional) Provide an image link and category</p>
+            <input type="text" name="image" placeholder="Image Link">
+            <input type="text" name="category" placeholder="Category">
+        </div>
+        <br>
+        <input class="btn btn-primary" type="submit" value="Save">
+    </form>
+{% endblock %}
