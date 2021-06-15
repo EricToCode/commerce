@@ -8,6 +8,14 @@ from .models import User, Listing
 
 
 def index(request):
+    if request.method == "POST":
+        title = request.POST["title"]
+        description = request.POST["description"]
+        startingbid = request.POST["starting bid"]
+        image = request.POST["image"]
+        category = request.POST["category"]
+        newlisting = Listing(title=title, description=description, currentbid=startingbid, image=image, category=category)
+        newlisting.save()
     Listings = Listing.objects.all()
     return render(request, "auctions/index.html", {
         "Listings": Listings
@@ -67,13 +75,3 @@ def register(request):
 
 def createlisting(request):
     return render(request, "auctions/createlisting.html")
-
-def savelisting(request):
-    title = request.POST["title"]
-    description = request.POST["description"]
-    startingbid = request.POST["starting bid"]
-    image = request.POST["image"]
-    category = request.POST["category"]
-    newlisting = Listing(title=title, description=description, startingbid=startingbid, image=image, category=category)
-    newlisting.save()
-    return index(request)

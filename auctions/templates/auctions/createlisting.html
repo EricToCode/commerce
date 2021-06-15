@@ -4,7 +4,7 @@
 
     <h2>Create a new listing</h2>
     <br>
-    <form action="{% url 'savelisting' %}" method="post">
+    <form action="{% url 'index' %}" method="post">
         {% csrf_token %}
         <div>
             <p>Title of Listing</p>

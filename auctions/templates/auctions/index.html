@@ -6,7 +6,21 @@
     <ul style="list-style-type:none">
         {% for listing in Listings %}
             <li>
-                <p>{{ listing.title }}</p>
+                <hr>
+                <div class="row">
+                    <div class="column">
+                        {% if listing.image == "" %}
+                            <p>No image.</p>
+                        {% else %}
+                            <img src="{{ listing.image }}">
+                        {% endif %}
+                    </div>
+                    <div class="column">
+                      <h3>{{ listing.title }}</h3>
+                      <p><b>Price: </b>${{ listing.currentbid}}</p>
+                    </div>
+                </div>
+                <hr>
             </li>
         {% endfor %}
     </ul>

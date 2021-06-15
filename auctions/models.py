@@ -8,7 +8,7 @@ class User(AbstractUser):
 class Listing(models.Model):
     title = models.CharField(max_length=80)
     description = models.CharField(max_length=2000)
-    startingbid = models.IntegerField()
+    currentbid = models.IntegerField()
     image = models.CharField(max_length=64)
     category = models.CharField(max_length=64)
 
@@ -18,3 +18,5 @@ class Bid(models.Model):
 class Comment(models.Model):
     pass
 
+class Watchlist(models.Model):
+    pass
