@@ -75,3 +75,6 @@ def register(request):
 
 def createlisting(request):
     return render(request, "auctions/createlisting.html")
+
+def watchlist(request):
+    return render(request, "auctions/watchlist.html")

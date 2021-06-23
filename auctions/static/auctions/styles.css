@@ -16,3 +16,7 @@ body {
     padding: 10px;
     height: 300px;
 }
+
+.listings {
+    list-style-type:none
+}

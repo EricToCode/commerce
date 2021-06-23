@@ -1,9 +1,11 @@
 {% extends "auctions/layout.html" %}
 
+{% load static %}
+
 {% block body %}
     <h2>Active Listings</h2>
     <br>
-    <ul style="list-style-type:none">
+    <ul class="listings">
         {% for listing in Listings %}
             <li>
                 <hr>
