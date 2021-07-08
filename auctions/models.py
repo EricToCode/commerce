@@ -6,7 +6,7 @@ class User(AbstractUser):
     pass
 
 class Listing(models.Model):
-    title = models.CharField(max_length=80)
+    title = models.CharField(max_length=64)
     description = models.CharField(max_length=2000)
     currentbid = models.IntegerField()
     image = models.CharField(max_length=64)
@@ -19,4 +19,5 @@ class Comment(models.Model):
     pass
 
 class Watchlist(models.Model):
-    pass
+    title = models.CharField(max_length=80)
+    user = models.CharField(max_length=64, default='')

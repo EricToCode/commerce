@@ -1,7 +1,5 @@
 {% extends "auctions/layout.html" %}
 
-{% load static %}
-
 {% block body %}
     <h2>Active Listings</h2>
     <br>
@@ -19,7 +17,12 @@
                     </div>
                     <div class="column">
                       <h3>{{ listing.title }}</h3>
-                      <p><b>Price: </b>${{ listing.currentbid}}</p>
+                      <p><b>Price: </b>${{ listing.currentbid }}</p>
+                      <form method="post">
+                        {% csrf_token %}
+                        <input type="hidden" name="passedValue" value="{{ listing.title }}" />
+                        <button type="submit" name="addToWishlist">Add to Wishlist</button>
+                      </form>
                     </div>
                 </div>
                 <hr>

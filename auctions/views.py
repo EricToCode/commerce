@@ -4,10 +4,19 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse
 
-from .models import User, Listing
+from .models import User, Listing, Watchlist
 
 
 def index(request):
+    if request.method == "POST" and 'addToWishlist' in request.POST:
+        # need to rework this to merge the two databases
+        newWatch = Watchlist(title=request.POST["passedValue"], user=User.get_username)
+        newWatch.save()
+        List = Watchlist.objects.filter(user=User.get_username)
+        return render(request, "auctions/watchlist.html", {
+            "list": List
+        })        
+
     if request.method == "POST":
         title = request.POST["title"]
         description = request.POST["description"]
@@ -77,4 +86,7 @@ def createlisting(request):
     return render(request, "auctions/createlisting.html")
 
 def watchlist(request):
-    return render(request, "auctions/watchlist.html")
+    List = Watchlist.objects.filter(user=User.get_username)
+    return render(request, "auctions/watchlist.html", {
+        "list": List
+    }) 

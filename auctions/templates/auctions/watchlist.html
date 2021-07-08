@@ -4,5 +4,15 @@
 
     <h2>Watchlist</h2>
     <br>
-    
+
+    <p>{{ user }}</p>
+    <ul>
+        {% for item in list %}
+        <li>
+            <hr>
+            {{ item.title }}
+            <hr>
+        </li>
+        {% endfor %}
+    </ul>
 {% endblock %}
